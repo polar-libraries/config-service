@@ -1,5 +1,6 @@
 server:
   port: 8888
+  shutdown: graceful
   tomcat:
     connection-timeout: 2s
     keep-alive-connection: 15s
@@ -10,6 +11,8 @@ server:
 spring:
   application:
     name: config-service
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
   cloud:
     config:
       server:
@@ -19,4 +22,3 @@ spring:
           timeout: 5
           clone-on-start: true
           force-pull: true
-          basedir: /home/erick-silva/Downloads/teste
