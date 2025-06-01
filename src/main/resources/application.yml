@@ -22,3 +22,22 @@ spring:
           timeout: 5
           clone-on-start: true
           force-pull: true
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
